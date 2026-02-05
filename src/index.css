@@ -1,0 +1,43 @@
+@import "@fontsource/cinzel";
+@import "@fontsource/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* DEFAULT (Light Mode - Dispel Copy) */
+        --background: 255 255 255;
+        /* White */
+        --foreground: 0 0 0;
+        /* Black */
+        --muted: 180 180 180;
+        --primary: 0 0 0;
+        /* Black text for primary actions in light mode */
+        --border: 229 231 235;
+        /* Gray-200 */
+        --promo: 243 244 246;
+        /* Gray-100 for top bar */
+    }
+
+    .dark {
+        /* SAVED DARK MODE (Terrasque Original) */
+        --background: 5 5 5;
+        /* #050505 */
+        --foreground: 255 255 255;
+        /* #FFFFFF */
+        --muted: 161 161 170;
+        /* #A1A1AA */
+        --primary: 212 175 55;
+        /* #D4AF37 (Gold) */
+        --border: 42 42 42;
+        /* #2A2A2A */
+        --promo: 18 18 18;
+        /* Dark promo bar */
+    }
+}
+
+body {
+    @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+}
