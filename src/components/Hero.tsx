@@ -1,18 +1,18 @@
 import React from "react";
+import heroBg from "../assets/hero-bg.jpg";
 
 const Hero = () => {
     return (
-        <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden font-sans">
+        <section className="relative h-[95vh] w-full flex items-center justify-center overflow-hidden font-sans">
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 animate-slow-zoom"
                 style={{
-                    // Using a high-quality dice image that works for both themes
-                    backgroundImage: `url('https://images.unsplash.com/photo-1629814421163-1498e727829e?q=80&w=3456&auto=format&fit=crop')`,
+                    backgroundImage: `url(${heroBg})`,
                 }}
             >
                 {/* Subtle overlay to Ensure text readability on both light/dark images */}
-                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 bg-black/50" />
             </div>
 
             {/* Content Overlay */}
@@ -29,8 +29,19 @@ const Hero = () => {
                 <button className="bg-white text-black px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:bg-gray-100 transition-colors shadow-lg">
                     Show Me The Dice
                 </button>
-
             </div>
+
+            {/* Instagram Link */}
+            <a
+                href="https://instagram.com/terrasquedice"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-8 right-8 z-20 text-white/60 hover:text-white flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] transition-colors"
+            >
+                <span>@TerrasqueDice</span>
+                <div className="w-px h-3 bg-white/40"></div>
+                <span>Follow Us</span>
+            </a>
 
         </section>
     );

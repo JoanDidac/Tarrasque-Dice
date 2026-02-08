@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Search, ShoppingBag, User, Heart, ChevronDown, Menu, X } from "lucide-react";
 
-const Navbar = () => {
+import logo from "../assets/terrasque-logo.png";
+
+const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
@@ -56,11 +58,14 @@ const Navbar = () => {
                     </button>
 
                     {/* Logo (Left-aligned) */}
-                    <a href="/" className="flex flex-col items-center group">
-                        {/* Simple geometric logo placeholder for Terrasque */}
-                        <div className="w-8 h-8 border-2 border-foreground rotate-45 mb-1 group-hover:bg-foreground/5 transition-colors"></div>
-                        <span className="text-[10px] tracking-[0.3em] font-bold text-foreground">TERRASQUE</span>
-                    </a>
+                    <div onClick={onLogoClick} className="flex flex-col items-center group cursor-pointer justify-center relative">
+                        <img
+                            src={logo}
+                            alt="Terrasque Logo"
+                            className="w-[60px] h-auto mb-[-2px] opacity-90 group-hover:opacity-100 transition-opacity"
+                        />
+                        <span className="text-sm tracking-[0.25em] font-light uppercase opacity-80 mt-[-2px] text-[#545454]" style={{ fontFamily: "'Uncial Antiqua', cursive", transform: "scaleX(0.75)" }}>TERRASQUE</span>
+                    </div>
 
                     {/* Desktop Navigation (Center) */}
                     <div className="hidden lg:flex items-center gap-6 xl:gap-8">
@@ -68,9 +73,10 @@ const Navbar = () => {
                             <div key={link.name} className="relative group h-full flex items-center">
                                 <a
                                     href={link.href}
-                                    className="flex items-center gap-1.5 text-[11px] xl:text-xs font-medium uppercase tracking-widest text-foreground hover:text-foreground/60 transition-colors py-4"
+                                    className="flex items-center gap-1.5 text-[11px] xl:text-xs font-light uppercase tracking-widest text-[#A9A9A9] hover:text-black transition-colors py-4 relative"
                                 >
                                     {link.name}
+                                    <span className="absolute bottom-2 left-0 w-0 h-[0.5px] bg-black transition-all duration-300 group-hover:w-full"></span>
                                     {link.hasDropdown && (
                                         <ChevronDown size={10} className="text-muted group-hover:text-foreground transition-colors" />
                                     )}
@@ -109,26 +115,28 @@ const Navbar = () => {
                             <ShoppingBag size={20} strokeWidth={1.5} />
                         </button>
                     </div>
-                </div>
+                </div >
 
                 {/* Mobile Menu Overlay */}
-                {isMobileMenuOpen && (
-                    <div className="absolute top-full left-0 w-full bg-background border-b border-border p-6 lg:hidden flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2 h-[100vh]">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="flex items-center justify-between text-sm uppercase tracking-widest font-medium text-foreground py-3 border-b border-border/20"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                {link.name}
-                                {link.hasDropdown && <ChevronDown size={14} />}
-                            </a>
-                        ))}
-                    </div>
-                )}
-            </nav>
-        </div>
+                {
+                    isMobileMenuOpen && (
+                        <div className="absolute top-full left-0 w-full bg-background border-b border-border p-6 lg:hidden flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2 h-[100vh]">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="flex items-center justify-between text-sm uppercase tracking-widest font-light text-[#A9A9A9] hover:text-black py-3 border-b border-border/20"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {link.name}
+                                    {link.hasDropdown && <ChevronDown size={14} />}
+                                </a>
+                            ))}
+                        </div>
+                    )
+                }
+            </nav >
+        </div >
     );
 };
 
