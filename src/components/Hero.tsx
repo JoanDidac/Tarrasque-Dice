@@ -1,4 +1,3 @@
-import React from "react";
 import heroBg from "../assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -33,12 +32,12 @@ const Hero = () => {
 
             {/* Instagram Link */}
             <a
-                href="https://instagram.com/terrasquedice"
+                href="https://instagram.com/tarrasquedice"
                 target="_blank"
                 rel="noreferrer"
                 className="absolute bottom-8 right-8 z-20 text-white/60 hover:text-white flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] transition-colors"
             >
-                <span>@TerrasqueDice</span>
+                <span>@TarrasqueDice</span>
                 <div className="w-px h-3 bg-white/40"></div>
                 <span>Follow Us</span>
             </a>

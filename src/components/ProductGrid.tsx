@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ChevronDown, Heart, SlidersHorizontal } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, Heart } from "lucide-react";
 import dogAdventurerImg from "../assets/products/dog-adventurer-dice.png";
 import stormySeasImg from "../assets/products/stormy-seas-dice.png";
 import terraformImg from "../assets/products/terraform-dice.png";
@@ -47,7 +47,7 @@ const PRODUCTS = [
 ];
 
 const FILTERS = [
-    "Product Type", "Color", "Ink Color", "Dice Style", "Collection", "Dispel X"
+    "Color", "Ink Color", "Collaboration", "Collection"
 ];
 
 const ProductGrid = ({ onProductClick }: { onProductClick: (id: number) => void }) => {

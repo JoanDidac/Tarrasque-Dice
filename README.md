@@ -1,4 +1,4 @@
-# 🐉 Terrasque Dice
+# 🐉 Tarrasque Dice
 
 <div align="center">
   <h3>Premium Handcrafted Dice for Tabletop Adventures</h3>
@@ -9,7 +9,7 @@
 
 ## 📖 About
 
-**Terrasque Dice** is a premium e-commerce frontend designed for selling artisanal tabletop gaming dice. Inspired by industry leaders like *Dispel Dice*, this project features a "Dark Luxury" aesthetic that puts the product front and center.
+**Tarrasque Dice** is a premium e-commerce frontend designed for selling artisanal tabletop gaming dice. Inspired by industry leaders like *Dispel Dice*, this project features a "Dark Luxury" aesthetic that puts the product front and center.
 
 The design focuses on immersive visuals, clean typography, and a seamless user experience, making it perfect for luxury gaming accessories.
 
@@ -43,8 +43,8 @@ Follow these steps to get the project running locally.
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/JoanDidac/Terrasque-Dice.git
-    cd Terrasque-Dice
+    git clone https://github.com/JoanDidac/Tarrasque-Dice.git
+    cd Tarrasque-Dice
     ```
 
 2.  **Install dependencies**

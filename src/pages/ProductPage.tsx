@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Heart, ChevronDown, ChevronUp, Share2, Info, Star } from "lucide-react";
+import { useState } from "react";
+import { Heart, ChevronDown, ChevronUp, Share2, Info } from "lucide-react";
 
 // Asset imports (reuse from ProductGrid to avoid duplication if possible, 
 // but for now re-importing is safer to ensure we have access)

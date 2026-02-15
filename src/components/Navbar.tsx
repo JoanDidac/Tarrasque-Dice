@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Search, ShoppingBag, User, Heart, ChevronDown, Menu, X } from "lucide-react";
 
-import logo from "../assets/terrasque-logo.png";
+import logo from "../assets/tarrasque-logo.png";
 
-const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
+const Navbar = ({ onLogoClick, onCollaborationClick, onBlogClick }: { onLogoClick: () => void, onCollaborationClick?: (slug: string) => void, onBlogClick: () => void }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
@@ -17,13 +17,21 @@ const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
                 "Liquid Core", "Palette", "Glow In The Dark", "Terraform", "All Dice"
             ]
         },
+
         {
-            name: "Accessories & More",
+            name: "Collaborations",
             href: "#",
             hasDropdown: true,
-            items: ["Clothing", "Gaming", "View All"]
+            items: [
+                { label: "Fallout Inspired", slug: "fallout-inspired" },
+                { label: "Vox Machina", slug: "vox-machina" },
+                { label: "The Mighty Nein", slug: "the-mighty-nein" },
+                { label: "Hazbin Hotel", slug: "hazbin-hotel" },
+                { label: "OnyxStorm", slug: "onyxstorm" },
+                { label: "Malkavian", slug: "malkavian" },
+                { label: "Denia", slug: "denia" }
+            ]
         },
-        { name: "Collaborations", href: "#", hasDropdown: true },
         {
             name: "By Collection",
             href: "#",
@@ -61,10 +69,10 @@ const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
                     <div onClick={onLogoClick} className="flex flex-col items-center group cursor-pointer justify-center relative">
                         <img
                             src={logo}
-                            alt="Terrasque Logo"
+                            alt="Tarrasque Logo"
                             className="w-[60px] h-auto mb-[-2px] opacity-90 group-hover:opacity-100 transition-opacity"
                         />
-                        <span className="text-sm tracking-[0.25em] font-light uppercase opacity-80 mt-[-2px] text-[#545454]" style={{ fontFamily: "'Uncial Antiqua', cursive", transform: "scaleX(0.75)" }}>TERRASQUE</span>
+                        <span className="text-sm tracking-[0.25em] font-light uppercase opacity-80 mt-[-2px] text-[#545454]" style={{ fontFamily: "'Uncial Antiqua', cursive", transform: "scaleX(0.75)" }}>TARRASQUE</span>
                     </div>
 
                     {/* Desktop Navigation (Center) */}
@@ -73,6 +81,12 @@ const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
                             <div key={link.name} className="relative group h-full flex items-center">
                                 <a
                                     href={link.href}
+                                    onClick={(e) => {
+                                        if (link.name === "Blog") {
+                                            e.preventDefault();
+                                            onBlogClick();
+                                        }
+                                    }}
                                     className="flex items-center gap-1.5 text-[11px] xl:text-xs font-light uppercase tracking-widest text-[#A9A9A9] hover:text-black transition-colors py-4 relative"
                                 >
                                     {link.name}
@@ -82,18 +96,28 @@ const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
                                     )}
                                 </a>
 
-                                {/* Dropdown Menu */}
                                 {link.items && (
                                     <div className="absolute top-full left-0 w-48 bg-background border border-border shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 flex flex-col py-3 mt-0">
-                                        {link.items.map((item) => (
-                                            <a
-                                                key={item}
-                                                href="#"
-                                                className="text-[13px] text-foreground/80 hover:text-foreground hover:bg-foreground/5 py-2.5 px-6 text-left transition-colors font-sans normal-case tracking-normal block"
-                                            >
-                                                {item}
-                                            </a>
-                                        ))}
+                                        {link.items.map((item) => {
+                                            const isCollab = typeof item === 'object';
+                                            const label = isCollab ? item.label : item;
+                                            return (
+                                                <a
+                                                    key={label}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        if (isCollab && onCollaborationClick) {
+                                                            e.preventDefault();
+                                                            onCollaborationClick(item.slug);
+                                                            setIsMobileMenuOpen(false);
+                                                        }
+                                                    }}
+                                                    className="text-[13px] text-foreground/80 hover:text-foreground hover:bg-foreground/5 py-2.5 px-6 text-left transition-colors font-sans normal-case tracking-normal block"
+                                                >
+                                                    {label}
+                                                </a>
+                                            )
+                                        })}
                                     </div>
                                 )}
                             </div>
@@ -126,7 +150,17 @@ const Navbar = ({ onLogoClick }: { onLogoClick: () => void }) => {
                                     key={link.name}
                                     href={link.href}
                                     className="flex items-center justify-between text-sm uppercase tracking-widest font-light text-[#A9A9A9] hover:text-black py-3 border-b border-border/20"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={(e) => {
+                                        if (link.name === "Collaborations" && onCollaborationClick) {
+                                            e.preventDefault();
+                                        } else if (link.name === "Blog") {
+                                            e.preventDefault();
+                                            onBlogClick();
+                                            setIsMobileMenuOpen(false);
+                                        } else {
+                                            setIsMobileMenuOpen(false);
+                                        }
+                                    }}
                                 >
                                     {link.name}
                                     {link.hasDropdown && <ChevronDown size={14} />}

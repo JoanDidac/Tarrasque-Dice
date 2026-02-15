@@ -1,4 +1,3 @@
-import React from "react";
 import { Facebook, Instagram, Twitter, ChevronDown } from "lucide-react";
 
 const Footer = () => {
@@ -72,7 +71,7 @@ const Footer = () => {
                             <span>🇺🇸 UNITED STATES (USD $)</span>
                             <ChevronDown size={12} />
                         </button>
-                        <span>© 2025 TERRASQUE DICE</span>
+                        <span>© 2025 TARRASQUE DICE</span>
                     </div>
 
                     {/* Right: Payment Icons (CSS placeholders) */}
