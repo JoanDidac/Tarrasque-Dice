@@ -2,7 +2,7 @@
   "name": "tarrasque-dice",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://JoanDidac.github.io/Terrasque-Dice/",
+  "homepage": "https://JoanDidac.github.io/Tarrasque-Dice/",
   "type": "module",
   "scripts": {
     "dev": "vite",
