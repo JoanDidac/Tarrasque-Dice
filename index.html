@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/Terrasque-Dice/favicon.png" id="favicon" />
+  <script>
+    const favicon = document.getElementById('favicon');
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const updateFavicon = (e) => {
+      favicon.href = e.matches ? '/favicon-light.png' : '/favicon.png';
+    };
+
+    // Initial check
+    updateFavicon(isDark);
+
+    // Listen for changes
+    isDark.addEventListener('change', updateFavicon);
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tarrasque-dice</title>
+  <script type="module" crossorigin src="/Terrasque-Dice/assets/index-CMdVvDUY.js"></script>
+  <link rel="stylesheet" crossorigin href="/Terrasque-Dice/assets/index-B5kJsvqP.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
