@@ -1,6 +1,16 @@
 @import "@fontsource/cinzel";
 @import "@fontsource/inter";
-@import url('https://fonts.googleapis.com/css2?family=Anta&family=Iceland&family=Quintessential&family=Uncial+Antiqua&display=swap');
+
+@font-face {
+    font-family: 'Uncial Antiqua';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./assets/fonts/uncial-antiqua-latin-400-normal.woff2') format('woff2'),
+        url('./assets/fonts/uncial-antiqua-latin-400-normal.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Iceland&family=Quintessential&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -41,4 +51,9 @@
 
 body {
     @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+}
+
+.font-uncial {
+    font-family: 'Uncial Antiqua', cursive !important;
+    font-weight: 400;
 }

@@ -1,26 +1,67 @@
 import { useState } from "react";
 import { Heart, ChevronDown, ChevronUp, Share2, Info } from "lucide-react";
 
-// Asset imports (reuse from ProductGrid to avoid duplication if possible, 
-// but for now re-importing is safer to ensure we have access)
-import dogAdventurerImg from "../assets/products/dog-adventurer-dice.png";
-import stormySeasImg from "../assets/products/stormy-seas-dice.png";
-import terraformImg from "../assets/products/terraform-dice.png";
-import sirensTearsImg from "../assets/products/sirens-tears-dice.png";
-import celestialPaladinImg from "../assets/products/celestial-paladin-dice.png";
-import voidWalkerImg from "../assets/products/void-walker-dice.png";
-import rubyFireballImg from "../assets/products/ruby-fireball-dice.png";
-import sapphireOceanImg from "../assets/products/sapphire-ocean-dice.png";
+// Product images — Real Instagram product photos
+import blueStormImg from "../assets/products/blue-storm-dice.png";
+import emeraldShadowImg from "../assets/products/emerald-shadow-dice.png";
+import crimsonCoreImg from "../assets/products/crimson-core-dice.png";
+import amberPercentileImg from "../assets/products/amber-percentile-dice.png";
+import oceanDepthsImg from "../assets/products/ocean-depths-dice.png";
+import forestGuardianImg from "../assets/products/forest-guardian-dice.png";
+import crystalClarityImg from "../assets/products/crystal-clarity-dice.png";
+import magentaGoldImg from "../assets/products/magenta-gold-dice.png";
+import goldenEmberImg from "../assets/products/golden-ember-dice.png";
+import shadowSmokeImg from "../assets/products/shadow-smoke-dice.png";
+import arcaneSurgeImg from "../assets/products/arcane-surge-dice.png";
+import darkForestImg from "../assets/products/dark-forest-dice.png";
+import voidAmethystImg from "../assets/products/void-amethyst-dice.png";
+import bloodRubyImg from "../assets/products/blood-ruby-dice.png";
+import nebulaSparkImg from "../assets/products/nebula-spark-dice.png";
+import infernoResinImg from "../assets/products/inferno-resin-dice.png";
+import jadeWhisperImg from "../assets/products/jade-whisper-dice.png";
+import obsidianFlameImg from "../assets/products/obsidian-flame-dice.png";
+import midnightOilImg from "../assets/products/midnight-oil-dice.png";
+import tealMysticImg from "../assets/products/teal-mystic-dice.png";
+import violetStormImg from "../assets/products/violet-storm-dice.png";
+import sapphireVeinsImg from "../assets/products/sapphire-veins-dice.png";
+import royalPurpleImg from "../assets/products/royal-purple-dice.png";
+import prismShiftImg from "../assets/products/prism-shift-dice.png";
+import roseQuartzImg from "../assets/products/rose-quartz-dice.png";
+import seafoamDreamImg from "../assets/products/seafoam-dream-dice.png";
+import amethystGlowImg from "../assets/products/amethyst-glow-dice.png";
+import stardustImg from "../assets/products/stardust-dice.png";
+import frostedSilverImg from "../assets/products/frosted-silver-dice.png";
 
 const PRODUCTS = [
-    { id: 1, name: "Dog Adventurer 7-Piece Iconic Dice Set", price: 85.00, image: dogAdventurerImg },
-    { id: 2, name: "Stormy Seas 7-Piece Liquid Core Set", price: 95.00, image: stormySeasImg },
-    { id: 3, name: "Alien Worlds 7-Piece Terraform Set", price: 85.00, image: terraformImg },
-    { id: 4, name: "Siren's Tears 7-Piece Iridescent Set", price: 70.00, image: sirensTearsImg },
-    { id: 5, name: "Celestial Paladin 7-Piece Set", price: 65.00, image: celestialPaladinImg },
-    { id: 6, name: "Void Walker Sharp Edge Set", price: 75.00, image: voidWalkerImg },
-    { id: 7, name: "Ruby Fireball Resin Set", price: 55.00, image: rubyFireballImg },
-    { id: 8, name: "Sapphire Ocean Liquid Core", price: 95.00, image: sapphireOceanImg },
+    { id: 1, name: "Blue Storm 7-Piece Sharp Edge Set", price: 85.00, image: blueStormImg },
+    { id: 2, name: "Emerald Shadow 7-Piece Artisan Set", price: 95.00, image: emeraldShadowImg },
+    { id: 3, name: "Crimson Core Liquid Center Die", price: 45.00, image: crimsonCoreImg },
+    { id: 4, name: "Amber Glow Percentile Dice", price: 85.00, image: amberPercentileImg },
+    { id: 5, name: "Ocean Depths 7-Piece Swirl Set", price: 78.00, image: oceanDepthsImg },
+    { id: 6, name: "Forest Guardian Sharp Edge Set", price: 72.00, image: forestGuardianImg },
+    { id: 7, name: "Crystal Clarity 7-Piece Resin Set", price: 68.00, image: crystalClarityImg },
+    { id: 8, name: "Magenta & Gold 7-Piece Resin Set", price: 70.00, image: magentaGoldImg },
+    { id: 9, name: "Golden Ember Inclusion Set", price: 88.00, image: goldenEmberImg },
+    { id: 10, name: "Shadow Smoke 7-Piece Dark Set", price: 82.00, image: shadowSmokeImg },
+    { id: 11, name: "Arcane Surge Metallic Edge Set", price: 90.00, image: arcaneSurgeImg },
+    { id: 12, name: "Dark Forest 7-Piece Nature Set", price: 76.00, image: darkForestImg },
+    { id: 13, name: "Void Amethyst 7-Piece Set", price: 65.00, image: voidAmethystImg },
+    { id: 14, name: "Blood Ruby Sharp Edge Set", price: 92.00, image: bloodRubyImg },
+    { id: 15, name: "Nebula Spark Resin Set", price: 55.00, image: nebulaSparkImg },
+    { id: 16, name: "Inferno Resin Liquid Core", price: 98.00, image: infernoResinImg },
+    { id: 17, name: "Jade Whisper 7-Piece Pastel Set", price: 60.00, image: jadeWhisperImg },
+    { id: 18, name: "Obsidian Flame Sharp Edge Set", price: 88.00, image: obsidianFlameImg },
+    { id: 19, name: "Midnight Oil 7-Piece Dark Set", price: 74.00, image: midnightOilImg },
+    { id: 20, name: "Teal Mystic Sharp Edge Set", price: 75.00, image: tealMysticImg },
+    { id: 21, name: "Violet Storm Artisan Set", price: 89.00, image: violetStormImg },
+    { id: 22, name: "Sapphire Veins Liquid Core", price: 55.00, image: sapphireVeinsImg },
+    { id: 23, name: "Royal Purple 7-Piece Artisan Set", price: 95.00, image: royalPurpleImg },
+    { id: 24, name: "Prism Shift 7-Piece Rainbow Set", price: 82.00, image: prismShiftImg },
+    { id: 25, name: "Rose Quartz Sharp Edge Set", price: 78.00, image: roseQuartzImg },
+    { id: 26, name: "Seafoam Dream 7-Piece Pastel Set", price: 70.00, image: seafoamDreamImg },
+    { id: 27, name: "Amethyst Glow Inclusion Set", price: 86.00, image: amethystGlowImg },
+    { id: 28, name: "Stardust 7-Piece Cosmic Set", price: 92.00, image: stardustImg },
+    { id: 29, name: "Frosted Silver Iridescent Set", price: 80.00, image: frostedSilverImg },
 ];
 
 const ProductPage = ({ id, onBack }: { id: number | null, onBack: () => void }) => {
